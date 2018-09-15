@@ -22,8 +22,6 @@
   <p>el contenido no existe</p>
   <?php endif;?>
 </article>
-
-
 <section class=" Pagination Other">
   <?php  previous_post_link(); ?> <!-- paginacion flechas -->
   <?php  next_post_link(); echo "<br> <br>"; ?>  
