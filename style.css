@@ -1,0 +1,79 @@
+/* 
+Theme Name:cinecodigo
+Author: Irving Mendoza
+Author URI: webdesignrs.com
+Version: 1.0.0
+Tags: theme responsive, cine, movies, films, minimal, multiple-menus
+Text Domain: cinecode
+*/ 
+
+html{
+    background-color: slategrey;
+    color: salmon;
+    font-family: 'Kosugi Maru';
+    box-sizing: border-box;
+}
+
+*´
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.header, .Main, .Footer{
+    border: thin solid greenyellow;    
+}
+
+.Main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: 'content sidebar'
+                         'comment-sidebr sidebar';
+    grid-gap: 1rem;
+
+}
+
+.Main> *{
+    background-color: #ccc;
+    padding: 1rem;
+    color: #222;
+
+}
+ 
+.Content{
+    grid-area: content;
+}
+.Content hr{
+    border: thick dotted greenyellow;
+    margin: 3rem auto;
+    width: 80%;
+}
+
+.Sidebar{
+    grid-area: sidebar;
+}
+
+.Other{
+    grid-area: comment-sidebr;
+}
+
+
+.Widget, .Pagination{
+    background-color: #aaa;
+    margin-bottom: 2rem;
+    padding: 1em;
+}
+
+.error{
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.custom-logo-link img{
+    width: 100px;
+    height: auto;
+}
