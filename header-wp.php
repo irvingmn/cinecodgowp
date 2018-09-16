@@ -1,12 +1,12 @@
 <header class="WP-Header">
     <?php  
     if(has_custom_header()):
-        twentythirteen_custom_header_marup();
+        the_custom_header_markup();
     endif; 
-    ?>
-    <div class="WP-Heaer-brandig">
+    ?> 
+    <div class="WP-Header-branding">
         <h1 class="WP-Header-title">
-            <a href="<?php  echo esc_url(home_url('/'));?>"><?php  bloginfo('name'); ?></a>
+            <a href="<?php echo esc_url(home_url('/'));?>"><?php  bloginfo('name'); ?></a>
         </h1>
         <p class="WP-Header-description"><?php  bloginfo('description'); ?></p>
 

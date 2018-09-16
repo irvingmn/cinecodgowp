@@ -65,6 +65,7 @@ if (!function_exists('cincode_setup')):
             'default-attachment' =>'fixed'
         ));
 
+
     }
  endif;
  add_action('after_setup_theme','cincode_setup');
@@ -109,3 +110,5 @@ if (!function_exists('cincode_setup')):
  endif;
 
  add_action('widgets_init', 'cinecode_register_sidebars');
+
+ require_once get_template_directory().'/inc/custom-header.php'; 
