@@ -65,6 +65,9 @@ if (!function_exists('cincode_setup')):
             'default-attachment' =>'fixed'
         ));
 
+        /* activa lalos lapices de edicion en widgets (en parte de personalizar tema) */
+        add_theme_support('customize-selective-refresh-widgets');
+
 
     }
  endif;
@@ -107,8 +110,11 @@ if (!function_exists('cincode_setup')):
             'after_title'=>'</h3>'
         ));
     }
- endif;
+ endif; 
 
  add_action('widgets_init', 'cinecode_register_sidebars');
 
  require_once get_template_directory().'/inc/custom-header.php'; 
+ require_once get_template_directory().'/inc/customizer.php'; 
+ require_once get_template_directory().'/inc/custom-login.php'; 
+ require_once get_template_directory().'/inc/custom-admin.php'; 
