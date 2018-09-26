@@ -38,6 +38,11 @@
 
 if (!function_exists('cincode_setup')):
     function cincode_setup(){ 
+        /* traducciones 
+        https://www.icanlocalize.com/tools/php_scanner Genera archibo PO
+        */
+        load_theme_textdomain('cinecode', get_template_directory().'languages');
+
         add_theme_support('post-thumbnails');
 
         add_theme_support('html5',array(
@@ -118,3 +123,5 @@ if (!function_exists('cincode_setup')):
  require_once get_template_directory().'/inc/customizer.php'; 
  require_once get_template_directory().'/inc/custom-login.php'; 
  require_once get_template_directory().'/inc/custom-admin.php'; 
+
+ ?>

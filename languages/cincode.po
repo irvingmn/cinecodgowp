@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: en_US\n"
+"X-Generator: Poedit 2.1.1\n"
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Menu Principal"
+msgstr "Main Menu"
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Menu Social"
+msgstr "Social Menu"
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Menu sitemap"
+msgstr "Sitemap Menu"
+
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: cinecodigo/inc/custom-admin.php:1
+msgid "Facebook"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/inc/custom-admin.php:1
+msgid "Mis Redes"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Sidebar Principal"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Sidebar lateral"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Tu sidebar izquierdo"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/functions.php:1
+msgid "Tu sidebar principal"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/inc/custom-admin.php:1
+msgid "Twitter"
+msgstr ""
+
+#. Text in function
+#: cinecodigo/inc/custom-admin.php:1
+msgid "webdesignrs"
+msgstr ""
