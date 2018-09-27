@@ -1,5 +1,9 @@
 <article class="Content">
-<?php if(have_posts()):while(have_posts()):the_post();?>
+
+<?php 
+query_posts(null); /* para el loop de la clase wp-query no afecte el loop normal*/
+
+if(have_posts()):while(have_posts()):the_post();?>
   <article>
       
       <!-- imagen destcada -->
@@ -20,7 +24,7 @@
   <hr>
   <?php endwhile;else:?>
   <p>el contenido no existe</p>
-  <?php endif;?>
+  <?php endif; wp_reset_postdata();?>
 </article>
 <section class=" Pagination Other">
   <?php  previous_post_link(); ?> <!-- paginacion flechas -->

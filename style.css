@@ -29,9 +29,10 @@ html{
 .Main{
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas: 'content sidebar'
-                         'comment-sidebr sidebar';
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: 'wp-query wp-query'
+                        'content sidebar'
+                        'comment-sidebr sidebar';
     grid-gap: 1rem;
 
 }
@@ -50,6 +51,10 @@ html{
     border: thick dotted greenyellow;
     margin: 3rem auto;
     width: 80%;
+}
+
+.WP-Query{
+    grid-area: wp-query;
 }
 
 .Sidebar{
