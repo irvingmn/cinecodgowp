@@ -20,5 +20,6 @@
             endwhile;
         endif;
         wp_reset_postdata(); /* limpia el loop y las variables  */
+        wp_reset_query(); /* limpia la variable de la consulta (argumentos wp_query)  */
      ?>
 </section>
