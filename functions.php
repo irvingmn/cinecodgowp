@@ -122,6 +122,7 @@ if (!function_exists('cincode_setup')):
  require_once get_template_directory().'/inc/customizer.php'; 
  require_once get_template_directory().'/inc/custom-login.php'; 
  require_once get_template_directory().'/inc/custom-admin.php'; 
- require_once get_template_directory().'/inc/custom-post-types.php'; 
+/*  require_once get_template_directory().'/inc/custom-post-types.php';  */
+/*  require_once get_template_directory().'/inc/custom-taxonomies.php'; */ 
 
  ?>
