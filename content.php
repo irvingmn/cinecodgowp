@@ -17,6 +17,18 @@ if(have_posts()):while(have_posts()):the_post();?>
         the_time(get_option('date_format')); echo "<br> <br>";  /* fecha desde admin */
         the_author_posts_link(); /* autor con link  */
       ?>
+      <h3>Custom Fields & Metaboxes</h3>
+      <?php  the_meta();?> <!-- agrega todos los custom fields -->
+      <p>
+        <?php  echo get_post_meta(get_the_ID(),'Año', true); ?>
+      </p> 
+      <p>
+        <?php  echo get_post_meta(get_the_ID(),'Director', true); ?>
+      </p>
+      <h3>AFC</h3>
+      <p>
+        <?php echo get_field('estrenos_pais'); ?>
+      </p> 
       <p><?php the_category(',');?></p>  <!-- cat separado por coma -->
     
   </article>

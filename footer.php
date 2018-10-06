@@ -10,7 +10,20 @@
     ?>
     </footer>
     <div>
-        <small>&copy; <?php  echo date('Y'); ?> por irving</small>
+        <p>
+            <small>
+                <?php  
+                    if(get_option('cinecode_footer_text')!==''):
+                        echo esc_html(get_option('cinecode_footer_text'));/* sanitiza e ignora el texto en html */
+                    else: 
+                    ?>
+                        &copy; <?php  echo date('Y'); ?> por irving
+                    <?php  
+                    endif;
+                ?>
+            </small>
+        </p>
+        
     </div>
 
 </body>
