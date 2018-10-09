@@ -127,5 +127,6 @@ if (!function_exists('cincode_setup')):
 /* require_once get_template_directory().'/inc/custom-metaboxes.php';  */
 require_once get_template_directory().'/inc/custom-pre-get-post.php'; 
 require_once get_template_directory().'/inc/custom-theme-options.php'; 
+require_once get_template_directory().'/inc/custom-contact-form.php'; 
 
  ?>
