@@ -90,4 +90,18 @@ if ( !function_exists('cinecode_contact_form')):
   endif;
   add_shortcode( 'contact_form', 'cinecode_contact_form' ); /*  */
 
+
+  if (!function_exists('cincode_contact_scripts')):
+    function cincode_contact_scripts(){
+    if(is_page('contacto')):
+        wp_register_style('contact-form-style', get_template_directory_uri().'/css/contact_form.css', array(),'1.0.0','all');
+        wp_enqueue_style('contact-form-style');
+
+        wp_register_script('contact_form_script', get_template_directory_uri().'/js/contact_form.js',array(),'1.0.0', true);
+        wp_enqueue_script('contact_form_script'); 
+    endif;
+    }
+ endif;
+ add_action('wp_enqueue_scripts','cincode_contact_scripts');
+
 ?>
