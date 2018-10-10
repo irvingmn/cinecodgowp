@@ -83,7 +83,7 @@ if ( !function_exists('cinecode_contact_form')):
        <input type="text" name="subject" placeholder="Asunto a tratar">
         <textarea name="comments" cols="50" rows="5" placeholder="Escribe tus comentarios"></textarea>
         <input type="submit" value="Enviar">
-        <input type="hidden" name="send_contact_form" value="1">
+        <input type="hidden" name="send_contact_form"  value="1" >
       </form>
     <?php
     }
@@ -91,7 +91,7 @@ if ( !function_exists('cinecode_contact_form')):
   add_shortcode( 'contact_form', 'cinecode_contact_form' ); /*  */
 
 
-  if (!function_exists('cincode_contact_scripts')):
+ if (!function_exists('cincode_contact_scripts')):
     function cincode_contact_scripts(){
     if(is_page('contacto')):
         wp_register_style('contact-form-style', get_template_directory_uri().'/css/contact_form.css', array(),'1.0.0','all');
@@ -104,4 +104,36 @@ if ( !function_exists('cinecode_contact_form')):
  endif;
  add_action('wp_enqueue_scripts','cincode_contact_scripts');
 
+
+ if (!function_exists('cincode_contact_form_save')):
+    function cincode_contact_form_save(){
+    if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['send_contact_form'])): /*SI var global server para el metodo request sea (exactamnet===) e igual a post (y&&) isset evalua si existe una variable(send_contact_form) ejecuta */
+
+    global $wpdb;
+    $name = sanitize_text_field($_POST['name']); /* sanitize impide que se inyecte codigo malicioso desde el form y afectar la bd */
+    $email = sanitize_text_field($_POST['email']);
+    $subject = sanitize_text_field($_POST['subject']);
+    $comments = sanitize_text_field($_POST['comments']);
+        
+    $table= $wpdb->prefix.'contact_form';
+    
+    /*arreglo asociativo de los datos y tiene qu concidir con el nombre en bd*/
+    $form_data = array( 
+        'name' => $name,
+        'email' => $email,
+        'subject' => $subject,
+        'comments' => $comments,
+        'contact_date' => date('Y-m-d H:m:s')
+    );
+
+    $form_formats =array('%s','%s','%s','%s','%s');  /* arreglo posicional */
+    $wpdb ->insert($table,$form_data, $form_formats); /* insertar datos con (nombre de la tabla, datatos, y validacion de tipo de dato */ 
+
+    $url= get_page_by_title('Gracias por tus comentarios'); /* obtener id de publicacion por titulo  */
+    wp_redirect(get_permalink($url->ID)); /* redireccionar por la variable url a traves del id */
+    exit(); /* para que ya no procese nada al navegador */
+    endif;
+    }
+ endif;
+ add_action('init','cincode_contact_form_save');
 ?>
