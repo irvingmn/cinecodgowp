@@ -57,13 +57,29 @@ if(!function_exists('cinecode_contact_form_comments')): /* formulario en admin p
                     </tr>
                 </thead>
                 <tbody>
-                    <td>valor 1</td>
-                    <td>valor 2</td>
-                    <td>valor 3</td>
-                    <td>valor 4</td>
-                    <td>valor 5</td>
-                    <td>valor 6</td>
-                    <td>valor 7</td>
+                    <?php
+                        global $wpdb;
+                        $table = $wpdb->prefix . 'contact_form';
+                        $rows = $wpdb->get_results( "SELECT * FROM $table", ARRAY_A );
+                    // echo '<pre>';
+                    //   var_dump($rows);
+                    // echo '</pre>';
+                        foreach ($rows as $row):
+                    ?>
+                        <tr>
+                        <td><?php echo $row['contact_id']; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['subject']; ?></td>
+                        <td><?php echo $row['comments']; ?></td>
+                        <td><?php echo $row['contact_date']; ?></td>
+                        <td>
+                            <a href="#" class="u-delete" data-contact-id="<?php echo $row['contact_id']; ?>"> <!-- se controla con ajax el link y con data-atributes (data-contact-id) de html5 sabra a que link va -->
+                            Eliminar
+                            </a>
+                        </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>  
@@ -136,4 +152,49 @@ if ( !function_exists('cinecode_contact_form')):
     }
  endif;
  add_action('init','cincode_contact_form_save');
+
+
+ if (!function_exists('cincode_contact_admin_scripts')):
+    function cincode_contact_admin_scripts(){
+        wp_register_script('contact_form_admin_script', get_template_directory_uri().'/js/contact_form_admin.js',array('jquery'),'1.0.0', true);
+
+        wp_enqueue_script('contact_form_admin_script'); 
+
+        wp_localize_script( /* permitir pasar valores de PHP A JS  */
+            'contact_form_admin_script', /* al archivo  contact_form_admin_script le paso el objeto "contact_form" con parametros */
+            'contact_form',
+            array(
+                'name'=> 'Modulo de comentarios de contacto',
+                'ajax_url' => admin_url('admin-ajax.php')
+            )
+        );
+    }
+ endif;
+
+ /* ajax ce wo */
+ add_action('admin_enqueue_scripts','cincode_contact_admin_scripts'); /* se ejecuta en el admin_enqueu_scrips */
+
+ if(!function_exists('cinecode_contact_form_delete')):
+    function cinecode_contact_form_delete(){
+        if(isset($_POST['id'])): /* eliminar id de la peticion en el (confirmDelete contact_form.js) */
+             global $wpdb;
+             $table = $wpdb ->prefix.'contact_form'; /* nonbre de la tabla en BD */
+            $delete_row = $wpdb->delete($table, array( 'contact_id' => $_POST['id'] ), array('%d'));
+
+            if ( $delete_row ) {
+                $response = array(
+                  'err' => false,
+                  'msg' => 'Se elimino el comentario con el ID ' . $_POST['id']
+                );
+              } else {
+                $response = array(
+                  'err' => true,
+                  'msg' => 'NO se elimino el comentario con el ID ' . $_POST['id']
+                );
+              }
+              die( json_encode($response) ); /* metodo die y se manda decodificada en json para que wp lo interpete con js */
+        endif;
+    }
+ endif;
+ add_action('wp_ajax_cinecode_contact_form_delete','cinecode_contact_form_delete'); /*accion para que el ajax de wp ejecute nuestra funcion  */
 ?>
