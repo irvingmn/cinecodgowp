@@ -24,6 +24,13 @@ d.addEventListener('click', e=>{ /* funcion que captura el evento del click para
                 url:contact_form.ajax_url,/* el nombre del objerto(contact_form) y la propiedad del objto donde viene el ajax de wp es (ajax_url)*/
                 success: data=>{
                     c(data) /* variable response */
+                    let res = JSON.parse(data) /* codifique a objeto de js */  
+
+                    if (!res.err) { /* elimina registro sin recargar */
+                        let selectorId = '[data-contact-id="' + id + '"]'
+                        c(selectorId)
+                        d.querySelector(selectorId).parentElement.parentElement.remove() /* elimina todo el tr<td(fila) que se construyo dinamicamente */
+                    }
                 }
             })
         }else{
